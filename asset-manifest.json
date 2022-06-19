@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/crowdfunding-react/static/css/main.aea40372.css",
+    "main.js": "/crowdfunding-react/static/js/main.e6718f45.js",
+    "static/media/image-hero-mobile.jpg": "/crowdfunding-react/static/media/image-hero-mobile.d4f477d4cd11ac3a012f.jpg",
+    "static/media/logo.svg": "/crowdfunding-react/static/media/logo.e6f12bc6bbf5e5c65ded26ce3d2904c7.svg",
+    "index.html": "/crowdfunding-react/index.html",
+    "static/media/logo-mastercraft.svg": "/crowdfunding-react/static/media/logo-mastercraft.dca2a8312b376716a2e0b7dfb8828b86.svg",
+    "static/media/icon-check.svg": "/crowdfunding-react/static/media/icon-check.bdee5269fa45688504fcc6fb78ab8756.svg",
+    "static/media/icon-bookmark.svg": "/crowdfunding-react/static/media/icon-bookmark.7777f8ecb9146d532ec6d401ce72f26e.svg",
+    "static/media/icon-hamburger.svg": "/crowdfunding-react/static/media/icon-hamburger.f8a9f0cf12d419a7d18556f98d81a47e.svg",
+    "main.aea40372.css.map": "/crowdfunding-react/static/css/main.aea40372.css.map",
+    "main.e6718f45.js.map": "/crowdfunding-react/static/js/main.e6718f45.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.aea40372.css",
+    "static/js/main.e6718f45.js"
+  ]
+}
