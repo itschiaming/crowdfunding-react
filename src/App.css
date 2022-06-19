@@ -1,38 +1,364 @@
-.App {
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: hsl(0, 0%, 96%);
+  font-family: "Commissioner", sans-serif;
+  line-height: 1.5;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+p {
+  color: hsl(0, 0%, 48%);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+section {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 5vw 1fr 5vw;
+}
+
+.header {
+  grid-column: 1 / 4;
+  background: url("./images/image-hero-mobile.jpg") no-repeat center / cover;
+}
+
+.nav {
+  width: 85vw;
+  margin: 2em auto 0 auto;
+  height: 300px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+}
+
+.nav__menu {
+  width: 20px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.nav__list {
+  background-color: white;
+  width: min(90vw, 500px);
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+  z-index: 2;
+}
+
+.nav__list li {
+  padding: 1em;
+}
+
+.nav__list li + li {
+  width: 100%;
+  border-top: 1px solid rgba(128, 128, 128, 0.245);
+}
+
+.main {
+  grid-column: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
   text-align: center;
+  padding: 2em;
+  margin-top: -3.5em;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.summary__img {
+  margin-top: -3.5em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.summary__action {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.summary__backing {
+  background-color: hsl(176, 50%, 47%);
+  color: white;
+  padding: 1.5em 2.5em;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.stats {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 3em;
+  text-align: center;
+  padding: 2em;
+}
+
+.stats div + div {
+  position: relative;
+}
+
+.stats div + div::before {
+  content: "";
+  position: absolute;
+  background-color: rgba(128, 128, 128, 0.283);
+  height: 1px;
+  width: 80px;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.about {
+  padding: 2em 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.about button {
+  background-color: hsl(176, 50%, 47%);
   color: white;
+  padding: 1.5em 2.5em;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.bamboo,
+.black-edition,
+.special-edition,
+.noReward {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1em;
+  border-radius: 10px;
+  border: 1px solid hsl(0, 0%, 78%);
+  padding: 1.5em;
+  transition: border 0.2s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.stand-heading > p {
+  color: hsl(176, 50%, 47%);
+}
+
+.howManyLeft-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+}
+
+.howManyLeft-container-modal {
+  justify-content: flex-start;
+}
+
+.howManyLeft {
+  font-size: 2rem;
+  color: black;
+  font-weight: bold;
+  margin-right: 0.125em;
+}
+
+.special-edition {
+  opacity: 0.25;
+}
+
+/* modal */
+.modal {
+  width: 80vw;
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -999;
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+
+.radio-container {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.radio-container + p {
+  padding-bottom: 1em;
+  border-bottom: 1px rgba(128, 128, 128, 0.323) solid;
+}
+
+.pledge-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+.pledge__text {
+  text-align: center;
+}
+
+.pledge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.pledge__input {
+  width: 6em;
+  height: 3em;
+  flex: 0.5;
+  border: 1px solid rgba(128, 128, 128, 0.323);
+  border-radius: 50px;
+  padding: 0 1em;
+}
+
+.pledge__btn {
+  flex: 0.5;
+}
+
+.checked,
+.bamboo:hover,
+.black-edition:hover,
+.special-edition:hover,
+.noReward:hover {
+  border-color: hsl(176, 50%, 47%);
+  border-width: 1px;
+}
+
+.checked > .pledge-container {
+  opacity: 1;
+  visibility: visible;
+  position: static;
+}
+
+/* success */
+.success {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 2;
+}
+
+.success__wrapper {
+  width: 75vw;
+  list-style: none;
+  background-color: white;
+  border-radius: 10px;
+  padding: 2em 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+.success__wrapper > button {
+  padding: 1em 2em;
+  background-color: hsl(176, 50%, 47%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+button:disabled {
+  background-color: gray;
+}
+
+@media (min-width: 1000px) {
+  .stand-heading {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
-  to {
-    transform: rotate(360deg);
+
+  .howManyLeft-container {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .summary__action {
+    justify-content: space-between;
+  }
+
+  .pledge-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .checked .howManyLeft-container {
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0;
   }
 }
